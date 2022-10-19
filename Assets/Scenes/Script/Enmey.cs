@@ -37,7 +37,7 @@ public class Enmey : MonoBehaviour
             }
 
             // 改狀態為死亡的判斷
-            if (EnmeyBlood.transform.position.x >= -1)
+            if (EnmeyBlood.transform.position.x <= -1)
             {
                 status = "dead";
             }
@@ -76,7 +76,7 @@ public class Enmey : MonoBehaviour
     {
 
     }
-    /*private void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, TraceRadius);
@@ -95,14 +95,14 @@ public class Enmey : MonoBehaviour
             Vector3 dir = (TargetPlayer.transform.position - transform.position).normalized;
             controller.Move(dir * Speed * Time.deltaTime);
         }
-    }*/
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "bullet")
         {
             EnmeyBlood.transform.Translate(-0.5f, 0, 0);
-            if (EnmeyBlood.transform.position.x >= -1)
+            if (EnmeyBlood.transform.position.x <= -1)
             {
                 Destroy(gameObject, 2);
             }
