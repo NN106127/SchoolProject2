@@ -14,6 +14,11 @@ public class Enmey : MonoBehaviour
     private CharacterController controller;
 
     public string status = "patrol";   // patrol = ¨µÅÞ; chasing = °l³v; dead = ¦º¤`;
+
+    public Transform[] target;
+    public float delta = 0.2f;
+    private static int i = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,12 +69,26 @@ public class Enmey : MonoBehaviour
 
     void DoPatrol()
     {
+        target[i].position = new Vector3(target[i].position.x, transform.position.y, target[i].position.z);
 
+        transform.LookAt(target[i]);
+
+        transform.Translate(Vector3.forward * Time.deltaTime * Speed);
+
+        if (transform.position.x > target[i].position.x - delta && transform.position.x < target[i].position.x + delta && transform.position.z > target[i].position.z - delta && transform.position.z < target[i].position.z + delta)
+        {
+            i = (i + 1) % target.Length;
+        }
     }
 
     void DoChasing()
     {
-
+        Vector3 relativePos = TargetPlayer.transform.position - transform.position;
+        Quaternion targetRotation = Quaternion.LookRotation(relativePos);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, TurnSpeed * Time.deltaTime);
+        Vector3 dir = (TargetPlayer.transform.position - transform.position).normalized;
+        dir.y = 0;
+        controller.Move(dir * Speed * Time.deltaTime);
     }
 
     void DoDead()
