@@ -18,6 +18,7 @@ public class Enmey : MonoBehaviour
     public Transform[] target;
     public float delta = 0.2f;
     private static int i = 0;
+    public float Timer;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class Enmey : MonoBehaviour
         {
             // 巡邏行為
             DoPatrol();
+            Timer = 0;
 
             // 改狀態為追逐的判斷
             float dist = Vector3.Distance(transform.position, TargetPlayer.transform.position);
@@ -48,23 +50,22 @@ public class Enmey : MonoBehaviour
             }
         }
 
+        // 脫離追蹤目標
+        if (Timer >= 2)
+        {
+            status = "patrol";
+        }
+
         if (status == "chasing")
         {
             DoChasing();
+            Timer = Timer + 1 * Time.deltaTime;
         }
 
         if (status == "dead")
         {
             DoDead();
         }
-        /*if (transform.position.y >= -0.85)
-        {
-            vDir.y -= gravity * Time.deltaTime;
-        }
-
-        EnmeyMove();
-
-        controller.Move((moveDirection + vDir) * Time.deltaTime);*/
     }
 
     void DoPatrol()
