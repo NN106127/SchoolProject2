@@ -50,7 +50,6 @@ public class Enmey : MonoBehaviour
             }
         }
 
-        // ²æÂ÷°lÂÜ¥Ø¼Ð
         if (Timer >= 2)
         {
             status = "patrol";
@@ -94,7 +93,10 @@ public class Enmey : MonoBehaviour
 
     void DoDead()
     {
-
+        if (EnmeyBlood.transform.position.x <= -1)
+        {
+            Destroy(gameObject, 2);
+        }
     }
     private void OnDrawGizmos()
     {
