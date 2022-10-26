@@ -190,7 +190,9 @@ public class TESTplayermove : MonoBehaviour
     {
         if(isHealing == false)
         {
+            
             HPbar.transform.Translate(-1f, 0, 0);
+            //m_Animator.SetInteger("Status", 6);
         }
         
     }
@@ -198,6 +200,7 @@ public class TESTplayermove : MonoBehaviour
     {
         if (other.gameObject.tag == "Death")
         {
+            //m_Animator.SetInteger("Status", 7);
             DeadZone();
             return;
         }
@@ -246,6 +249,7 @@ public class TESTplayermove : MonoBehaviour
     {
         if (HPbar.transform.localPosition.x <= -500)
         {
+            //m_Animator.SetInteger("Status", 7);
             t_Gameoverr.text = "Game Over";
         }
     }
