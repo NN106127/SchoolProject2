@@ -9,6 +9,8 @@ public class Enmey : MonoBehaviour
     public float Speed;      // 走路速度
     public float TurnSpeed;  // 轉向速度
     public float TraceRadius;// 追逐距離
+    public float ATKRadius;  // 攻擊距離
+    public float PatRadius;
     //float gravity = 20.0f;
     Vector3 moveDirection = Vector3.zero, vDir = Vector3.zero;
     private CharacterController controller;
@@ -36,13 +38,6 @@ public class Enmey : MonoBehaviour
             DoPatrol();
             Timer = 0;
 
-            // 改狀態為追逐的判斷
-            float dist = Vector3.Distance(transform.position, TargetPlayer.transform.position);
-            if (dist < TraceRadius)
-            {
-                status = "chasing";
-            }
-
             // 改狀態為死亡的判斷
             if (EnmeyBlood.transform.position.x <= -1)
             {
@@ -50,20 +45,35 @@ public class Enmey : MonoBehaviour
             }
         }
 
-        if (Timer >= 2)
+        // 改狀態為追逐的判斷
+        float dist = Vector3.Distance(transform.position, TargetPlayer.transform.position);
+        if (dist < TraceRadius)
+        {
+            status = "chasing";
+
+            if (dist < ATKRadius)
+            {
+                status = "atk";
+            }
+        }
+        else
         {
             status = "patrol";
         }
-
+            
         if (status == "chasing")
         {
             DoChasing();
-            Timer = Timer + 1 * Time.deltaTime;
         }
 
         if (status == "dead")
         {
             DoDead();
+        }
+
+        if(status == "atk")
+        {
+            DoATK();
         }
     }
 
@@ -91,10 +101,16 @@ public class Enmey : MonoBehaviour
         controller.Move(dir * Speed * Time.deltaTime);
     }
 
+    void DoATK()
+    {
+
+    }
+
     void DoDead()
     {
         if (EnmeyBlood.transform.position.x <= -1)
         {
+            Speed = 0;
             Destroy(gameObject, 2);
         }
     }
@@ -102,6 +118,10 @@ public class Enmey : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, TraceRadius);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, ATKRadius);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, PatRadius);
     }
 
     void EnmeyMove()
@@ -124,6 +144,7 @@ public class Enmey : MonoBehaviour
         if (other.gameObject.tag == "bullet")
         {
             EnmeyBlood.transform.Translate(-0.5f, 0, 0);
+            Destroy(gameObject, 2);
             if (EnmeyBlood.transform.position.x <= -1)
             {
                 Destroy(gameObject, 2);

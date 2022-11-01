@@ -7,6 +7,7 @@ using System.Timers;
 public class TESTplayermove : MonoBehaviour
 {
     //角色控制
+    float y = 0;
     public float WalkSpeed = 5.0f;
     public float RunSpeed = 2.5f;
     public float JumpSpeed = 25.0f;
@@ -70,25 +71,23 @@ public class TESTplayermove : MonoBehaviour
 
         if (boy.isGrounded)
         {
-
             MoveDirection = new Vector3(0, 0, Input.GetAxis("Horizontal"));
             MoveDirection = transform.TransformDirection(MoveDirection);
 
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
-                transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                y = 180;
+                transform.rotation = Quaternion.Euler(new Vector3(0, y, 0));
                 MoveDirection *= -WalkSpeed;
-                
-                //m_Animator.SetFloat("movespeed", 1);
                 m_Animator.SetInteger("Status", 1);
             }
 
 
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                y = 0;
                 MoveDirection *= WalkSpeed;
-                //m_Animator.SetFloat("movespeed", 1);
+                transform.rotation = Quaternion.Euler(new Vector3(0, y, 0));
                 m_Animator.SetInteger("Status", 1);
             }
 
@@ -108,10 +107,6 @@ public class TESTplayermove : MonoBehaviour
                m_Animator.SetInteger("Status", 3);
                 // m_Animator.SetFloat("movespeed", 25);
             }
-
-            
-
-
         }
 
 
@@ -200,6 +195,15 @@ public class TESTplayermove : MonoBehaviour
         {
             DeadZone();
             return;
+        }
+    }
+
+    public void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.tag == "Rock")
+        {
+            Debug.Log("RRRRRR");
+            HPbar.transform.Translate(-80f, 0, 0);
         }
     }
     public void SkillB()//攻擊技能
