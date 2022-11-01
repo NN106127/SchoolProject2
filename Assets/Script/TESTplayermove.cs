@@ -221,7 +221,7 @@ public class TESTplayermove : MonoBehaviour
         if (HPbar.transform.localPosition.x >= 0)//判斷是否為滿血
         {
             //x = 0;
-            text.text = "現在狀態為滿血無法使用此技能";
+            text.text = "現在狀態為滿血無法使用";
             Alpha = 1;
             isbeclikck = true;
             return;
