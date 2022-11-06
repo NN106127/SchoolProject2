@@ -10,7 +10,7 @@ public class SkillColdDown : MonoBehaviour
     public float skillcolddown;
     public Button skillbutton;
     public float currentCoolDown;//目前技能冷卻時間
-    public GameObject Effect;    //配合技能選特效
+    //public GameObject Effect;    //配合技能選特效
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +46,7 @@ public class SkillColdDown : MonoBehaviour
     {
         if(currentCoolDown < skillcolddown)
         {
-            Effect.SetActive(true);
+            //Effect.SetActive(true);
             currentCoolDown += Time.deltaTime;
             float fillAmountValue = 1 - (currentCoolDown / skillcolddown);
             ICON.fillAmount = fillAmountValue;
@@ -54,7 +54,7 @@ public class SkillColdDown : MonoBehaviour
             {
                 skillbutton.interactable = true;
                 ICON.gameObject.SetActive(false);
-                Effect.SetActive(false);
+                //Effect.SetActive(false);
             }
         }
     }

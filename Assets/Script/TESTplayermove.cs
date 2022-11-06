@@ -38,7 +38,6 @@ public class TESTplayermove : MonoBehaviour
     public float PowerZ = 20;
 
     //¯S®Ä
-    public GameObject A;
     public GameObject B;
     bool isFire;
     bool isHealth;
@@ -144,12 +143,10 @@ public class TESTplayermove : MonoBehaviour
 
         if (isFire)
         {
-            A.SetActive(true);
             AcurrentTimer += Time.deltaTime;
             if (AcurrentTimer >= timerA)
             {
                 isFire = false;
-                A.SetActive(false);
                 AcurrentTimer = 0;
             }
         }
@@ -216,7 +213,7 @@ public class TESTplayermove : MonoBehaviour
             return;
         }
         Rigidbody rb = Instantiate(bullet, transform.position, transform.rotation).GetComponent<Rigidbody>();
-        rb.velocity = transform.TransformDirection(new Vector3(0, 0, PowerZ));
+        rb.velocity = new Vector3(0, 0, PowerZ);
         isbeclikck = true;
         skillATKUI.useskillATK();
     }
