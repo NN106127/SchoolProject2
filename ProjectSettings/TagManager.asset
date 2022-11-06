@@ -8,6 +8,8 @@ TagManager:
   - bullet
   - robot
   - spawn
+  - Plane
+  - Rock
   layers:
   - Default
   - TransparentFX
