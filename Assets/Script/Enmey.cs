@@ -116,7 +116,10 @@ public class Enmey : MonoBehaviour
 
     void DoATK()
     {
-       
+        Vector3 targetDir = TargetPlayer.transform.position - transform.position;
+
+        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, 0.1f, 0.0F);
+
     }
 
     void DoDead()
