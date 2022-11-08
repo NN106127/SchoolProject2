@@ -64,6 +64,7 @@ public class TESTplayermove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         CharacterController boy = GetComponent<CharacterController>();
         m_Animator.SetInteger("Status", 0);
 
