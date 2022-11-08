@@ -127,7 +127,7 @@ public class Enmey : MonoBehaviour
         if (EnmeyBlood.transform.position.x <= -1)
         {
             Speed = 0;
-            Destroy(gameObject, 2);
+            Destroy(gameObject);
         }
     }
     private void OnDrawGizmos()
@@ -162,7 +162,7 @@ public class Enmey : MonoBehaviour
         if (other.gameObject.tag == "bullet")
         {
             EnmeyBlood.transform.Translate(-0.5f, 0, 0);
-            Destroy(gameObject, 2);
+            Destroy(gameObject);
             if (EnmeyBlood.transform.position.x <= -1)
             {
                 Destroy(gameObject, 2);
