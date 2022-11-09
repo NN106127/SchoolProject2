@@ -18,6 +18,7 @@ public class bullet : MonoBehaviour
     {
         transform.Translate(0, 0, Speed * Time.deltaTime);
         lifetime += Time.deltaTime;
+
         if(lifetime > 3)
         {
             Destroy(gameObject);

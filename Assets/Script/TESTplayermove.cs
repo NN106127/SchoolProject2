@@ -176,13 +176,15 @@ public class TESTplayermove : MonoBehaviour
                 currentHealingTime = 0;
             }
         }
+
+        Dead();
     }
     public void DeadZone()  //¬r°é
     {
         if(isHealing == false)
         {
             
-            HPbar.transform.Translate(-1f, 0, 0);
+            HPbar.transform.Translate(-5f, 0, 0);
             //m_Animator.SetInteger("Status", 6);
         }
         
@@ -211,7 +213,7 @@ public class TESTplayermove : MonoBehaviour
         {
             return;
         }
-        Instantiate(bullet, transform.position, transform.rotation);
+        //Instantiate(bullet, transform.position, transform.rotation);
         /*Rigidbody rb = Instantiate(bullet, transform.position, transform.rotation).GetComponent<Rigidbody>();
         rb.velocity = new Vector3(0, 0, PowerZ);*/
         isbeclikck = true;
@@ -250,8 +252,9 @@ public class TESTplayermove : MonoBehaviour
     {
         if (HPbar.transform.localPosition.x <= -500)
         {
-            //m_Animator.SetInteger("Status", 7);
-            t_Gameoverr.text = "Game Over";
+            m_Animator.SetInteger("Status", 7);
+            //t_Gameoverr.text = "Game Over";
+            Destroy(gameObject, 2);
         }
     }
 }
