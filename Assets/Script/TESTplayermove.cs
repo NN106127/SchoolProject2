@@ -211,8 +211,9 @@ public class TESTplayermove : MonoBehaviour
         {
             return;
         }
-        Rigidbody rb = Instantiate(bullet, transform.position, transform.rotation).GetComponent<Rigidbody>();
-        rb.velocity = new Vector3(0, 0, PowerZ);
+        Instantiate(bullet, transform.position, transform.rotation);
+        /*Rigidbody rb = Instantiate(bullet, transform.position, transform.rotation).GetComponent<Rigidbody>();
+        rb.velocity = new Vector3(0, 0, PowerZ);*/
         isbeclikck = true;
         skillATKUI.useskillATK();
     }

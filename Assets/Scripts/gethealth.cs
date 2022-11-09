@@ -21,7 +21,7 @@ public class gethealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isDestroy);
+        //Debug.Log(isDestroy);
         if (ai == null && isDestroy ==false)
         {
             health.SetActive(true);
