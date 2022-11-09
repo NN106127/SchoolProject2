@@ -10,6 +10,8 @@ TagManager:
   - spawn
   - Plane
   - Rock
+  - restart
+  - AI2
   layers:
   - Default
   - TransparentFX
