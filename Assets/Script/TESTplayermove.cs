@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Timers;
+using UnityEngine.SceneManagement;
 
 public class TESTplayermove : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class TESTplayermove : MonoBehaviour
     public float AcurrentTimer;
     public float BcurrentTimer;
 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -176,16 +178,21 @@ public class TESTplayermove : MonoBehaviour
                 currentHealingTime = 0;
             }
         }
-
+        
         Dead();
+        
     }
     public void DeadZone()  //¬r°é
     {
         if(isHealing == false)
         {
-            
+            GetComponent<Animator>().SetBool("hurt", true);
             HPbar.transform.Translate(-5f, 0, 0);
             //m_Animator.SetInteger("Status", 6);
+        }
+        else
+        {
+            GetComponent<Animator>().SetBool("hurt", false);
         }
         
     }
@@ -193,7 +200,7 @@ public class TESTplayermove : MonoBehaviour
     {
         if (other.gameObject.tag == "Death")
         {
-            //m_Animator.SetInteger("Status", 7);
+            
             DeadZone();
             return;
         }
@@ -252,9 +259,25 @@ public class TESTplayermove : MonoBehaviour
     {
         if (HPbar.transform.localPosition.x <= -500)
         {
-            m_Animator.SetInteger("Status", 7);
+            GetComponent<Animator>().SetBool("die", true);
+            
             //t_Gameoverr.text = "Game Over";
             Destroy(gameObject, 2);
+            
+            LoadScene();
+            
+
+        }
+        else
+        {
+            GetComponent<Animator>().SetBool("die", false);
         }
     }
+    
+    void LoadScene()
+    {
+       
+        SceneManager.LoadScene(4);
+    }
+    
 }
