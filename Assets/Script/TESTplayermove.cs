@@ -32,11 +32,6 @@ public class TESTplayermove : MonoBehaviour
     public float HealingTime;
     public float currentHealingTime;
 
-    //技能B
-    public GameObject bullet;
-    public GameObject firepoint;
-    public float PowerZ = 20;
-
     //特效
     public GameObject B;
     bool isFire;
@@ -205,14 +200,12 @@ public class TESTplayermove : MonoBehaviour
             HPbar.transform.Translate(-80f, 0, 0);
         }
     }
-    public void SkillB()//攻擊技能
+    public void SkillB()//攻擊技能(單純控制冷卻)
     {
         if(skillATKUI.isCoolingDown())
         {
             return;
         }
-        Rigidbody rb = Instantiate(bullet, transform.position, transform.rotation).GetComponent<Rigidbody>();
-        rb.velocity = new Vector3(0, 0, PowerZ);
         isbeclikck = true;
         skillATKUI.useskillATK();
     }
