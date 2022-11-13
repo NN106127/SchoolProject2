@@ -1,23 +1,14 @@
 fileFormatVersion: 2
-guid: a606777314400ea419ad98789e4f8245
+guid: 16a14fff08dcfe24f9c59a8ffac92a60
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
-  - first:
-      74: -6815798956932697659
-    second: Armature|AOE
   - first:
       74: 4418833167389719548
     second: Armature|ATTACK
   - first:
       74: 4540250025106317447
     second: Armature|WALK
-  - first:
-      74: -4128709595806574238
-    second: Armature|WALK (1)
-  - first:
-      74: 4465561386577726427
-    second: Armature|ATTACK (1)
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -51,43 +42,14 @@ ModelImporter:
       takeName: Armature|ATTACK
       internalID: 0
       firstFrame: 0
-      lastFrame: 39
+      lastFrame: 81
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|AOE
-      takeName: Armature|AOE
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 54
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -109,7 +71,7 @@ ModelImporter:
       takeName: Armature|WALK
       internalID: 0
       firstFrame: 0
-      lastFrame: 29
+      lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

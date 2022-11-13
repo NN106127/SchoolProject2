@@ -10,7 +10,6 @@ public class SkillColdDown : MonoBehaviour
     public float skillcolddown;
     public Button skillbutton;
     public float currentCoolDown;//目前技能冷卻時間
-    //public GameObject Effect;    //配合技能選特效
     // Start is called before the first frame update
     void Start()
     {

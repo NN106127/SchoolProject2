@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Timers;
+using UnityEngine.SceneManagement;
 
 public class TESTplayermove : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class TESTplayermove : MonoBehaviour
     public float AcurrentTimer;
     public float BcurrentTimer;
 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +66,7 @@ public class TESTplayermove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         CharacterController boy = GetComponent<CharacterController>();
         m_Animator.SetInteger("Status", 0);
 
@@ -175,14 +178,21 @@ public class TESTplayermove : MonoBehaviour
                 currentHealingTime = 0;
             }
         }
+        
+        Dead();
+        
     }
     public void DeadZone()  //¬r°é
     {
         if(isHealing == false)
         {
-            
-            HPbar.transform.Translate(-1f, 0, 0);
+            GetComponent<Animator>().SetBool("hurt", true);
+            HPbar.transform.Translate(-5f, 0, 0);
             //m_Animator.SetInteger("Status", 6);
+        }
+        else
+        {
+            GetComponent<Animator>().SetBool("hurt", false);
         }
         
     }
@@ -190,7 +200,7 @@ public class TESTplayermove : MonoBehaviour
     {
         if (other.gameObject.tag == "Death")
         {
-            //m_Animator.SetInteger("Status", 7);
+            
             DeadZone();
             return;
         }
@@ -210,8 +220,9 @@ public class TESTplayermove : MonoBehaviour
         {
             return;
         }
-        Rigidbody rb = Instantiate(bullet, transform.position, transform.rotation).GetComponent<Rigidbody>();
-        rb.velocity = new Vector3(0, 0, PowerZ);
+        //Instantiate(bullet, transform.position, transform.rotation);
+        /*Rigidbody rb = Instantiate(bullet, transform.position, transform.rotation).GetComponent<Rigidbody>();
+        rb.velocity = new Vector3(0, 0, PowerZ);*/
         isbeclikck = true;
         skillATKUI.useskillATK();
     }
@@ -248,8 +259,25 @@ public class TESTplayermove : MonoBehaviour
     {
         if (HPbar.transform.localPosition.x <= -500)
         {
-            //m_Animator.SetInteger("Status", 7);
-            t_Gameoverr.text = "Game Over";
+            GetComponent<Animator>().SetBool("die", true);
+            
+            //t_Gameoverr.text = "Game Over";
+            Destroy(gameObject, 2);
+            
+            LoadScene();
+            
+
+        }
+        else
+        {
+            GetComponent<Animator>().SetBool("die", false);
         }
     }
+    
+    void LoadScene()
+    {
+       
+        SceneManager.LoadScene(4);
+    }
+    
 }

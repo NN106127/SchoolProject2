@@ -15,6 +15,8 @@ public class Enmey : MonoBehaviour
     Vector3 moveDirection = Vector3.zero, vDir = Vector3.zero;
     private CharacterController controller;
 
+    private Animator m_Animator;
+
     public string status = "patrol";   // patrol = ¨µÅÞ; chasing = °l³v; dead = ¦º¤`;
 
     public Transform[] target;
@@ -26,14 +28,17 @@ public class Enmey : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         // ¨µÅÞª¬ºA
         if (status == "patrol")
         {
+            
             // ¨µÅÞ¦æ¬°
             DoPatrol();
             Timer = 0;
@@ -50,15 +55,19 @@ public class Enmey : MonoBehaviour
         if (dist < TraceRadius)
         {
             status = "chasing";
-
+            
             if (dist < ATKRadius)
             {
+
                 status = "atk";
+                
+                GetComponent<Animator>().SetBool("status", true);
             }
         }
         else
         {
             status = "patrol";
+            GetComponent<Animator>().SetBool("status", false);
         }
             
         if (status == "chasing")
@@ -79,6 +88,7 @@ public class Enmey : MonoBehaviour
 
     void DoPatrol()
     {
+        
         target[i].position = new Vector3(target[i].position.x, transform.position.y, target[i].position.z);
 
         transform.LookAt(target[i]);
@@ -89,20 +99,26 @@ public class Enmey : MonoBehaviour
         {
             i = (i + 1) % target.Length;
         }
+        
     }
 
     void DoChasing()
     {
+        
         Vector3 relativePos = TargetPlayer.transform.position - transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(relativePos);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, TurnSpeed * Time.deltaTime);
         Vector3 dir = (TargetPlayer.transform.position - transform.position).normalized;
         dir.y = 0;
         controller.Move(dir * Speed * Time.deltaTime);
+        
     }
 
     void DoATK()
     {
+        Vector3 targetDir = TargetPlayer.transform.position - transform.position;
+
+        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, 0.1f, 0.0F);
 
     }
 
@@ -111,7 +127,7 @@ public class Enmey : MonoBehaviour
         if (EnmeyBlood.transform.position.x <= -1)
         {
             Speed = 0;
-            Destroy(gameObject, 2);
+            Destroy(gameObject);
         }
     }
     private void OnDrawGizmos()
@@ -130,12 +146,14 @@ public class Enmey : MonoBehaviour
         float dist = Vector3.Distance(transform.position, TargetPlayer.transform.position);
         if (dist < TraceRadius)
         {
+            
             //º¥º¥¬Ý¦Vª±®a
             Vector3 relativePos = TargetPlayer.transform.position - transform.position;
             Quaternion targetRotation = Quaternion.LookRotation(relativePos);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, TurnSpeed * Time.deltaTime);
             Vector3 dir = (TargetPlayer.transform.position - transform.position).normalized;
             controller.Move(dir * Speed * Time.deltaTime);
+            
         }
     }
 
@@ -144,7 +162,7 @@ public class Enmey : MonoBehaviour
         if (other.gameObject.tag == "bullet")
         {
             EnmeyBlood.transform.Translate(-0.5f, 0, 0);
-            Destroy(gameObject, 2);
+            Destroy(gameObject);
             if (EnmeyBlood.transform.position.x <= -1)
             {
                 Destroy(gameObject, 2);
