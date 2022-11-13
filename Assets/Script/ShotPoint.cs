@@ -18,10 +18,16 @@ public class ShotPoint : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.E))
         {
+            Debug.Log("111");
+
             if (skillATKUI.isCoolingDown())
             {
+                Debug.Log("222");
                 return;
             }
+
+            Debug.Log("333");
+
             Rigidbody rb = Instantiate(bullet, transform.position, transform.rotation).GetComponent<Rigidbody>();
             rb.velocity = new Vector3(0, 0, PowerZ);
         }

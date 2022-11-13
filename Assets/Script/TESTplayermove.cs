@@ -23,6 +23,7 @@ public class TESTplayermove : MonoBehaviour
     private Color colorOrgion = new Color(0, 0, 0, 1);//默認黑色
     private float Alpha = 1.0f;
     Timer timer = new Timer(2000);
+    public Image MonsterImage;
 
     //技能冷卻
     public Text t_Gameoverr;
@@ -59,6 +60,7 @@ public class TESTplayermove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //MonsterImage.fillAmount = HP / 10;
         
         CharacterController boy = GetComponent<CharacterController>();
         m_Animator.SetInteger("Status", 0);
@@ -206,6 +208,7 @@ public class TESTplayermove : MonoBehaviour
         {
             return;
         }
+
         isbeclikck = true;
         skillATKUI.useskillATK();
     }
