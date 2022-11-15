@@ -5,14 +5,13 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     public GameObject TargetPlayer;
-    public GameObject posionA;
-    public GameObject posionB;
     public float distance;
     public float TraceRadius;  //°l³v¶ZÂ÷
     public float TurnSpeed;
     public string status  = "patrol";
     public float BossSkillTimer = 0;
 
+    public int i = 0;
 
     public GameObject m_rockPrefab;
     public Transform m_rightHandTransform;
@@ -20,8 +19,7 @@ public class Boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        posionA.SetActive(false);
-        posionB.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -30,18 +28,8 @@ public class Boss : MonoBehaviour
         distance = Vector3.Distance(transform.position, TargetPlayer.transform.position);
         if (distance < 15)
         {
-            LookPlayer();
+            //LookPlayer();
             status = "ATK";
-        }
-
-        if (status == "ATK")
-        {
-            BossSkillTimer += Time.deltaTime;
-            if(BossSkillTimer >= 3 )
-            {
-                RockThrow();
-                BossSkillTimer = 0;
-            }
         }
     }
 
@@ -69,4 +57,5 @@ public class Boss : MonoBehaviour
     {
         GameObject rock = Instantiate(m_rockPrefab, m_rightHandTransform.position, Quaternion.identity);
     }
+
 }

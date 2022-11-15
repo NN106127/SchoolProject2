@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enmey : MonoBehaviour
 {
-    public GameObject EnmeyBlood;
     public GameObject TargetPlayer;
     public float Speed;      // 走路速度
     public float TurnSpeed;  // 轉向速度
@@ -18,11 +17,16 @@ public class Enmey : MonoBehaviour
     private Animator m_Animator;
 
     public string status = "patrol";   // patrol = 巡邏; chasing = 追逐; dead = 死亡;
+    public int dmage = -80;
 
     public Transform[] target;
     public float delta = 0.2f;
     private static int i = 0;
     public float Timer;
+
+    //怪物血量
+    public float maxHp = 350;
+    public float currHp = 350;
 
     // Start is called before the first frame update
     void Start()
@@ -34,42 +38,39 @@ public class Enmey : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        // 巡邏狀態
-        if (status == "patrol")
-        {
-            
-            // 巡邏行為
-            DoPatrol();
-            Timer = 0;
-
-            // 改狀態為死亡的判斷
-            if (EnmeyBlood.transform.position.x <= -1)
-            {
-                status = "dead";
-            }
-        }
-
         // 改狀態為追逐的判斷
         float dist = Vector3.Distance(transform.position, TargetPlayer.transform.position);
         if (dist < TraceRadius)
         {
             status = "chasing";
-            
+
             if (dist < ATKRadius)
             {
 
                 status = "atk";
-                
                 GetComponent<Animator>().SetBool("status", true);
             }
         }
-        else
+
+         else
+         {
+             status = "patrol";
+             GetComponent<Animator>().SetBool("status", false);
+         }
+
+        // 巡邏狀態
+        if (status == "patrol")
         {
-            status = "patrol";
-            GetComponent<Animator>().SetBool("status", false);
+            if (currHp <= 0)
+            {
+                Debug.Log("DEAD");
+                Destroy(gameObject,2);
+            }
+            // 巡邏行為
+            DoPatrol();
+            Timer = 0;
         }
-            
+
         if (status == "chasing")
         {
             DoChasing();
@@ -116,20 +117,14 @@ public class Enmey : MonoBehaviour
 
     void DoATK()
     {
-        Vector3 targetDir = TargetPlayer.transform.position - transform.position;
-
-        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, 0.1f, 0.0F);
-
+       
     }
 
     void DoDead()
     {
-        if (EnmeyBlood.transform.position.x <= -1)
-        {
-            Speed = 0;
-            Destroy(gameObject);
-        }
+       
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
@@ -161,12 +156,8 @@ public class Enmey : MonoBehaviour
     {
         if (other.gameObject.tag == "bullet")
         {
-            EnmeyBlood.transform.Translate(-0.5f, 0, 0);
-            Destroy(gameObject);
-            if (EnmeyBlood.transform.position.x <= -1)
-            {
-                Destroy(gameObject, 2);
-            }
+            Debug.Log("Hit");
+            currHp -= 175;
         }
     }
 }

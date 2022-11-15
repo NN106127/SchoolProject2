@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Timers;
-using UnityEngine.SceneManagement;
 
 public class TESTplayermove : MonoBehaviour
 {
@@ -24,19 +23,18 @@ public class TESTplayermove : MonoBehaviour
     private Color colorOrgion = new Color(0, 0, 0, 1);//默認黑色
     private float Alpha = 1.0f;
     Timer timer = new Timer(2000);
+    public Image MonsterImage;
 
     //技能冷卻
+    public GameObject firepoint;
+    public GameObject bullet;
+    public float PowerZ = 20f;
     public Text t_Gameoverr;
     public SkillColdDown skillBtnUI;
     public SkillColdDown skillATKUI;
     private bool isHealing;
     public float HealingTime;
     public float currentHealingTime;
-
-    //技能B
-    public GameObject bullet;
-    public GameObject firepoint;
-    public float PowerZ = 20;
 
     //特效
     public GameObject B;
@@ -47,7 +45,6 @@ public class TESTplayermove : MonoBehaviour
     public float AcurrentTimer;
     public float BcurrentTimer;
 
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +63,7 @@ public class TESTplayermove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //MonsterImage.fillAmount = HP / 10;
         
         CharacterController boy = GetComponent<CharacterController>();
         m_Animator.SetInteger("Status", 0);
@@ -178,21 +176,14 @@ public class TESTplayermove : MonoBehaviour
                 currentHealingTime = 0;
             }
         }
-        
-        Dead();
-        
     }
     public void DeadZone()  //毒圈
     {
         if(isHealing == false)
         {
-            GetComponent<Animator>().SetBool("hurt", true);
-            HPbar.transform.Translate(-5f, 0, 0);
+            
+            HPbar.transform.Translate(-1f, 0, 0);
             //m_Animator.SetInteger("Status", 6);
-        }
-        else
-        {
-            GetComponent<Animator>().SetBool("hurt", false);
         }
         
     }
@@ -200,7 +191,7 @@ public class TESTplayermove : MonoBehaviour
     {
         if (other.gameObject.tag == "Death")
         {
-            
+            //m_Animator.SetInteger("Status", 7);
             DeadZone();
             return;
         }
@@ -214,15 +205,14 @@ public class TESTplayermove : MonoBehaviour
             HPbar.transform.Translate(-80f, 0, 0);
         }
     }
-    public void SkillB()//攻擊技能
+    public void SkillB()//攻擊技能(單純控制冷卻)
     {
-        if(skillATKUI.isCoolingDown())
+        if (skillATKUI.isCoolingDown())
         {
             return;
         }
-        //Instantiate(bullet, transform.position, transform.rotation);
-        /*Rigidbody rb = Instantiate(bullet, transform.position, transform.rotation).GetComponent<Rigidbody>();
-        rb.velocity = new Vector3(0, 0, PowerZ);*/
+        Rigidbody rb = Instantiate(bullet, firepoint.transform.position, transform.rotation).GetComponent<Rigidbody>();
+        rb.velocity = transform.TransformDirection(new Vector3(0, 0, PowerZ));
         isbeclikck = true;
         skillATKUI.useskillATK();
     }
@@ -259,25 +249,8 @@ public class TESTplayermove : MonoBehaviour
     {
         if (HPbar.transform.localPosition.x <= -500)
         {
-            GetComponent<Animator>().SetBool("die", true);
-            
-            //t_Gameoverr.text = "Game Over";
-            Destroy(gameObject, 2);
-            
-            LoadScene();
-            
-
-        }
-        else
-        {
-            GetComponent<Animator>().SetBool("die", false);
+            //m_Animator.SetInteger("Status", 7);
+            t_Gameoverr.text = "Game Over";
         }
     }
-    
-    void LoadScene()
-    {
-       
-        SceneManager.LoadScene(4);
-    }
-    
 }
