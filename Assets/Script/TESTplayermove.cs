@@ -26,6 +26,9 @@ public class TESTplayermove : MonoBehaviour
     public Image MonsterImage;
 
     //技能冷卻
+    public GameObject firepoint;
+    public GameObject bullet;
+    public float PowerZ = 20f;
     public Text t_Gameoverr;
     public SkillColdDown skillBtnUI;
     public SkillColdDown skillATKUI;
@@ -204,11 +207,12 @@ public class TESTplayermove : MonoBehaviour
     }
     public void SkillB()//攻擊技能(單純控制冷卻)
     {
-        if(skillATKUI.isCoolingDown())
+        if (skillATKUI.isCoolingDown())
         {
             return;
         }
-
+        Rigidbody rb = Instantiate(bullet, firepoint.transform.position, transform.rotation).GetComponent<Rigidbody>();
+        rb.velocity = transform.TransformDirection(new Vector3(0, 0, PowerZ));
         isbeclikck = true;
         skillATKUI.useskillATK();
     }

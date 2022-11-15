@@ -1688,6 +1688,10 @@ MonoBehaviour:
   RotateSpeed: 0.5
   HPbar: {fileID: 467618659}
   text: {fileID: 53110869}
+  MonsterImage: {fileID: 0}
+  firepoint: {fileID: 1648751528}
+  bullet: {fileID: 1037905675759220430, guid: 24976b0d36603c341899ae1179135668, type: 3}
+  PowerZ: 20
   t_Gameoverr: {fileID: 0}
   skillBtnUI: {fileID: 747372805}
   skillATKUI: {fileID: 257942078}
@@ -7531,7 +7535,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1648751529}
-  - component: {fileID: 1648751530}
   m_Layer: 0
   m_Name: firepoint
   m_TagString: Untagged
@@ -7553,20 +7556,6 @@ Transform:
   m_Father: {fileID: 285210036}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1648751530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1648751528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aafc1d1678235643ae4498e8a392d3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 1037905675759220430, guid: 24976b0d36603c341899ae1179135668, type: 3}
-  skillATKUI: {fileID: 257942078}
 --- !u!4 &1652009063 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 42d440245948a4840872f97624e538a1, type: 3}
