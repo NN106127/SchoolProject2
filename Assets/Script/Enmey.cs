@@ -38,46 +38,39 @@ public class Enmey : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        // ¨µÅÞª¬ºA
-        if (status == "patrol")
-        {
-            // ¨µÅÞ¦æ¬°
-            DoPatrol();
-            Timer = 0;
-
-            /*if (UIFollow.Hurt.sizeDelta.x <= 0)
-            {
-                status = "Dead";
-            }*/
-        }
-
-        if (currHp <= 0)
-        {
-            status = "dead";
-        }
-
-
         // §ïª¬ºA¬°°l³vªº§PÂ_
         float dist = Vector3.Distance(transform.position, TargetPlayer.transform.position);
         if (dist < TraceRadius)
         {
             status = "chasing";
-            
+
             if (dist < ATKRadius)
             {
 
                 status = "atk";
-                
                 GetComponent<Animator>().SetBool("status", true);
             }
         }
-        else
+
+         else
+         {
+             status = "patrol";
+             GetComponent<Animator>().SetBool("status", false);
+         }
+
+        // ¨µÅÞª¬ºA
+        if (status == "patrol")
         {
-            status = "patrol";
-            GetComponent<Animator>().SetBool("status", false);
+            if (currHp <= 0)
+            {
+                Debug.Log("DEAD");
+                Destroy(gameObject);
+            }
+            // ¨µÅÞ¦æ¬°
+            DoPatrol();
+            Timer = 0;
         }
-            
+
         if (status == "chasing")
         {
             DoChasing();
@@ -129,7 +122,7 @@ public class Enmey : MonoBehaviour
 
     void DoDead()
     {
-            Destroy(gameObject);
+        Debug.Log("Destroy");
     }
 
     private void OnDrawGizmos()
@@ -164,7 +157,7 @@ public class Enmey : MonoBehaviour
         if (other.gameObject.tag == "bullet")
         {
             Debug.Log("Hit");
-            currHp -= 80;
+            currHp -= 350;
         }
     }
 }
