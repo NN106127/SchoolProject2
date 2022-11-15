@@ -8,7 +8,7 @@ public class UIFollow : MonoBehaviour
     public GameObject MonBar;
 
     //血量設定
-    public const int maxHealth = 350;
+    public const int maxHealth = 350;  //怪物血量總量
     public int currentHealth = maxHealth; // maxHealth = LifePoint
 
     //血量條
