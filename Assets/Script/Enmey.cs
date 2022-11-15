@@ -64,7 +64,7 @@ public class Enmey : MonoBehaviour
             if (currHp <= 0)
             {
                 Debug.Log("DEAD");
-                Destroy(gameObject);
+                Destroy(gameObject,2);
             }
             // ¨µÅÞ¦æ¬°
             DoPatrol();
@@ -122,7 +122,7 @@ public class Enmey : MonoBehaviour
 
     void DoDead()
     {
-        Debug.Log("Destroy");
+       
     }
 
     private void OnDrawGizmos()
@@ -157,7 +157,7 @@ public class Enmey : MonoBehaviour
         if (other.gameObject.tag == "bullet")
         {
             Debug.Log("Hit");
-            currHp -= 350;
+            currHp -= 175;
         }
     }
 }
