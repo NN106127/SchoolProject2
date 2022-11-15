@@ -131,6 +131,7 @@ public class Enmey : MonoBehaviour
     {
             Destroy(gameObject);
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
