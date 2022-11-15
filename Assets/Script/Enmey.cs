@@ -52,6 +52,11 @@ public class Enmey : MonoBehaviour
             }*/
         }
 
+        if (currHp <= 0)
+        {
+            status = "dead";
+        }
+
 
         // §ïª¬ºA¬°°l³vªº§PÂ_
         float dist = Vector3.Distance(transform.position, TargetPlayer.transform.position);
@@ -124,7 +129,7 @@ public class Enmey : MonoBehaviour
 
     void DoDead()
     {
-            Destroy(gameObject, 2);
+            Destroy(gameObject);
     }
     private void OnDrawGizmos()
     {
@@ -159,11 +164,6 @@ public class Enmey : MonoBehaviour
         {
             Debug.Log("Hit");
             currHp -= 80;
-            if(currHp <= 0)
-            {
-                status = "dead";
-            }
-            //UIFollow.currentHealth -= -80;
         }
     }
 }
