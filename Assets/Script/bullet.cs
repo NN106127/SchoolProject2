@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class bullet : MonoBehaviour
 {
+<<<<<<< HEAD
     public float Speed = 20;
+=======
+>>>>>>> Boss
     float lifetime = 0;
     // Start is called before the first frame update
     void Start()
