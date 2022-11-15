@@ -44,11 +44,21 @@ public class Enmey : MonoBehaviour
         {
             status = "chasing";
 
+            if (currHp <= 0)
+            {
+                Destroy(gameObject, 2);
+            }
+
             if (dist < ATKRadius)
             {
+                if (currHp <= 0)
+                {
+                    Destroy(gameObject, 2);
+                }
 
                 status = "atk";
                 GetComponent<Animator>().SetBool("status", true);
+
             }
         }
 
@@ -63,7 +73,6 @@ public class Enmey : MonoBehaviour
         {
             if (currHp <= 0)
             {
-                Debug.Log("DEAD");
                 Destroy(gameObject,2);
             }
             // ¨µÅÞ¦æ¬°

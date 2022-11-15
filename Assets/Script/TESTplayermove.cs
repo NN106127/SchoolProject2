@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Timers;
+using UnityEngine.SceneManagement;
 
 public class TESTplayermove : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class TESTplayermove : MonoBehaviour
     public float Gravity = 40.0f;
     public float RotateSpeed = 0.5f;
     private Animator m_Animator;
+    bool ishurt = false;
+    float hurtTime = 0;
     private Vector3 MoveDirection = Vector3.zero;
 
     //¦å¶q±±¨î
@@ -67,7 +70,7 @@ public class TESTplayermove : MonoBehaviour
         
         CharacterController boy = GetComponent<CharacterController>();
         m_Animator.SetInteger("Status", 0);
-
+        
         float currSpeed = WalkSpeed;
         if (boy.isGrounded)
         {
@@ -176,22 +179,31 @@ public class TESTplayermove : MonoBehaviour
                 currentHealingTime = 0;
             }
         }
+
+        if (ishurt == true)
+        {
+            GetComponent<Animator>().SetBool("hurt", true);
+            ishurt = false;
+        }
+        else
+        {
+            GetComponent<Animator>().SetBool("hurt", false);
+        }
+        Dead();
     }
     public void DeadZone()  //¬r°é
     {
-        if(isHealing == false)
-        {
-            
-            HPbar.transform.Translate(-1f, 0, 0);
+        ishurt = true;
+        if (isHealing == false)
+        { 
+            HPbar.transform.Translate(-5f, 0, 0);
             //m_Animator.SetInteger("Status", 6);
         }
-        
     }
     private void OnTriggerStay(Collider other)  //¬r°é
     {
         if (other.gameObject.tag == "Death")
         {
-            //m_Animator.SetInteger("Status", 7);
             DeadZone();
             return;
         }
@@ -247,10 +259,28 @@ public class TESTplayermove : MonoBehaviour
 
     void Dead()
     {
+        
         if (HPbar.transform.localPosition.x <= -500)
         {
-            //m_Animator.SetInteger("Status", 7);
-            t_Gameoverr.text = "Game Over";
+            hurtTime += Time.deltaTime;
+            ishurt = false;
+            GetComponent<Animator>().SetBool("hurt", false);
+            GetComponent<Animator>().SetBool("die", true);
+            //t_Gameoverr.text = "Game Over";
+            if (hurtTime >= 3)
+            {
+                Destroy(gameObject);
+                LoadScene();
+            }
+        }
+        else
+        {
+            GetComponent<Animator>().SetBool("die", false);
+        }
+        void LoadScene()
+        {
+            hurtTime = 0;
+            SceneManager.LoadScene(4);
         }
     }
 }
