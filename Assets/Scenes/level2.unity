@@ -2041,14 +2041,15 @@ MonoBehaviour:
   RotateSpeed: 0.5
   HPbar: {fileID: 467618659}
   text: {fileID: 53110869}
+  MonsterImage: {fileID: 0}
+  firepoint: {fileID: 1648751528}
+  bullet: {fileID: 1037905675759220430, guid: 24976b0d36603c341899ae1179135668, type: 3}
+  PowerZ: 20
   t_Gameoverr: {fileID: 0}
   skillBtnUI: {fileID: 747372805}
   skillATKUI: {fileID: 257942078}
   HealingTime: 3
   currentHealingTime: 0
-  bullet: {fileID: 1037905675759220430, guid: 24976b0d36603c341899ae1179135668, type: 3}
-  firepoint: {fileID: 1648751528}
-  PowerZ: 20
   B: {fileID: 1096362506}
   timerA: 3
   timerB: 3
@@ -3986,7 +3987,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32c58d71ae093b47a4fe54a557a8852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnmeyBlood: {fileID: 1912136714}
   TargetPlayer: {fileID: 285210033}
   Speed: 8
   TurnSpeed: 1
@@ -3994,11 +3994,14 @@ MonoBehaviour:
   ATKRadius: 4
   PatRadius: 10
   status: patrol
+  dmage: -80
   target:
   - {fileID: 2133248569}
   - {fileID: 1317960045}
   delta: 0.2
   Timer: 0
+  maxHp: 350
+  currHp: 350
 --- !u!95 &549742150
 Animator:
   serializedVersion: 3
@@ -5760,7 +5763,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32c58d71ae093b47a4fe54a557a8852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnmeyBlood: {fileID: 1734457887}
   TargetPlayer: {fileID: 285210033}
   Speed: 8
   TurnSpeed: 1
@@ -5768,11 +5770,14 @@ MonoBehaviour:
   ATKRadius: 4
   PatRadius: 10
   status: patrol
+  dmage: -80
   target:
   - {fileID: 1241574230}
   - {fileID: 1093037585}
   delta: 0.2
   Timer: 0
+  maxHp: 350
+  currHp: 350
 --- !u!95 &831220415
 Animator:
   serializedVersion: 3
@@ -6137,6 +6142,42 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 21}
   m_SizeDelta: {x: 500, y: 300}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &856359768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 856359769}
+  m_Layer: 5
+  m_Name: UI_Hp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &856359769
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856359768}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 950585795}
+  m_Father: {fileID: 1520401393}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &856954526
 PrefabInstance:
@@ -6529,6 +6570,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.6, y: 10.66, z: 0.19}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &950585794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 950585795}
+  m_Layer: 5
+  m_Name: HpBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &950585795
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950585794}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1727841012}
+  m_Father: {fileID: 856359769}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &952542158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6884,7 +6961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32c58d71ae093b47a4fe54a557a8852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnmeyBlood: {fileID: 435523643}
   TargetPlayer: {fileID: 285210033}
   Speed: 6
   TurnSpeed: 1
@@ -6892,11 +6968,14 @@ MonoBehaviour:
   ATKRadius: 4
   PatRadius: 10
   status: patrol
+  dmage: -80
   target:
   - {fileID: 369919136}
   - {fileID: 1487678807}
   delta: 0.2
   Timer: 0
+  maxHp: 350
+  currHp: 350
 --- !u!4 &971598827 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 16a14fff08dcfe24f9c59a8ffac92a60, type: 3}
@@ -7122,7 +7201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32c58d71ae093b47a4fe54a557a8852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnmeyBlood: {fileID: 1122461568}
   TargetPlayer: {fileID: 285210033}
   Speed: 8
   TurnSpeed: 1
@@ -7130,11 +7208,14 @@ MonoBehaviour:
   ATKRadius: 4
   PatRadius: 10
   status: patrol
+  dmage: -80
   target:
   - {fileID: 434738329}
   - {fileID: 341992729}
   delta: 0.2
   Timer: 0
+  maxHp: 350
+  currHp: 350
 --- !u!95 &1013072308
 Animator:
   serializedVersion: 3
@@ -7689,7 +7770,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32c58d71ae093b47a4fe54a557a8852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnmeyBlood: {fileID: 551247078}
   TargetPlayer: {fileID: 285210033}
   Speed: 4
   TurnSpeed: 1
@@ -7697,11 +7777,14 @@ MonoBehaviour:
   ATKRadius: 4
   PatRadius: 10
   status: patrol
+  dmage: -80
   target:
   - {fileID: 1066727398}
   - {fileID: 959911466}
   delta: 0.2
   Timer: 0
+  maxHp: 350
+  currHp: 350
 --- !u!95 &1050974655
 Animator:
   serializedVersion: 3
@@ -10387,7 +10470,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32c58d71ae093b47a4fe54a557a8852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnmeyBlood: {fileID: 531996247}
   TargetPlayer: {fileID: 285210033}
   Speed: 7
   TurnSpeed: 1
@@ -10395,11 +10477,14 @@ MonoBehaviour:
   ATKRadius: 4
   PatRadius: 10
   status: patrol
+  dmage: -80
   target:
   - {fileID: 111201088}
   - {fileID: 1279888296}
   delta: 0.2
   Timer: 0
+  maxHp: 350
+  currHp: 350
 --- !u!95 &1411410814
 Animator:
   serializedVersion: 3
@@ -10836,7 +10921,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32c58d71ae093b47a4fe54a557a8852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnmeyBlood: {fileID: 1272020826}
   TargetPlayer: {fileID: 285210033}
   Speed: 6
   TurnSpeed: 1
@@ -10844,11 +10928,14 @@ MonoBehaviour:
   ATKRadius: 4
   PatRadius: 10
   status: patrol
+  dmage: -80
   target:
   - {fileID: 1259023103}
   - {fileID: 1742233072}
   delta: 0.2
   Timer: 0
+  maxHp: 350
+  currHp: 350
 --- !u!95 &1464634935
 Animator:
   serializedVersion: 3
@@ -12122,6 +12209,7 @@ RectTransform:
   - {fileID: 177454241}
   - {fileID: 1203944705}
   - {fileID: 852035618}
+  - {fileID: 856359769}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13030,7 +13118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32c58d71ae093b47a4fe54a557a8852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnmeyBlood: {fileID: 505610848}
   TargetPlayer: {fileID: 285210033}
   Speed: 15
   TurnSpeed: 1
@@ -13038,11 +13125,14 @@ MonoBehaviour:
   ATKRadius: 4
   PatRadius: 10
   status: patrol
+  dmage: -80
   target:
   - {fileID: 2009433614}
   - {fileID: 1563188547}
   delta: 0.2
   Timer: 0
+  maxHp: 350
+  currHp: 350
 --- !u!95 &1668708890
 Animator:
   serializedVersion: 3
@@ -13327,6 +13417,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a6fe55c7c047ee448fab49f055787aa, type: 3}
   m_PrefabInstance: {fileID: 1858794844}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1727841011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1727841012}
+  - component: {fileID: 1727841014}
+  - component: {fileID: 1727841013}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1727841012
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727841011}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 950585795}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 350, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1727841013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727841011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1727841014
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727841011}
+  m_CullTransparentMesh: 1
 --- !u!4 &1732136317 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a6fe55c7c047ee448fab49f055787aa, type: 3}
