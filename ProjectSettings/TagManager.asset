@@ -12,6 +12,7 @@ TagManager:
   - Rock
   - restart
   - AI2
+  - video
   layers:
   - Default
   - TransparentFX
