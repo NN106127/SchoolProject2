@@ -2,19 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Video;
 
 public class leve2video : MonoBehaviour
 {
     public int m_seconds;                 //计璸竒传衡羆计
-    public VideoPlayer aaa;
+
     public int m_min;              //ノ砞﹚计璸だ牧
     public int m_sec;              //ノ砞﹚计璸计
 
     public GameObject img;
     // Start is called before the first frame update
     void Start()
-    {   
+    {
         
     }
 
@@ -27,11 +26,10 @@ public class leve2video : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
 
-        if (other.tag == "Player")
+        if (gameObject.tag == "video")
         {
 
             img.SetActive(true);
-            aaa.Play();
             StartCoroutine(Countdown());
 
 
@@ -39,7 +37,7 @@ public class leve2video : MonoBehaviour
     }
     IEnumerator Countdown()
     {
-        
+
         m_seconds = (m_min * 60) + m_sec;       //盢丁传衡计
 
         while (m_seconds > 0)                   //狦丁﹟ゼ挡
