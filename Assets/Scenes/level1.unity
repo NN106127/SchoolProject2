@@ -385,7 +385,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d305779be527e104d95bf5331d9211c8, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d305779be527e104d95bf5331d9211c8, type: 3}
       propertyPath: m_LocalScale.x
@@ -508,6 +508,11 @@ MonoBehaviour:
   JumpSpeed: 30
   Gravity: 50
   RotateSpeed: 0.5
+--- !u!4 &137355333 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d305779be527e104d95bf5331d9211c8, type: 3}
+  m_PrefabInstance: {fileID: 137355328}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &217032425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,6 +1073,7 @@ GameObject:
   - component: {fileID: 1272691887}
   - component: {fileID: 1272691886}
   - component: {fileID: 1272691885}
+  - component: {fileID: 1272691890}
   - component: {fileID: 1272691884}
   m_Layer: 0
   m_Name: Plane (2)
@@ -1085,10 +1091,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1272691883}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88def1269f9fbb64d8d336705e0bde8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 771b80a985dfcf343bf5b9aa74a98053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text01: {fileID: 1153222237}
+  speed: 0.01
 --- !u!65 &1272691885
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1173,12 +1179,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272691883}
   m_LocalRotation: {x: 0.50000006, y: 0.5000001, z: -0.49999982, w: 0.5}
-  m_LocalPosition: {x: -7.6, y: 0.5, z: -15.8}
-  m_LocalScale: {x: 13.325808, y: 0.5245, z: 3.8694394}
+  m_LocalPosition: {x: -37.226154, y: 16.2, z: 27.9}
+  m_LocalScale: {x: 36.6309, y: 1.1447157, z: 13.736588}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 137355333}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: -90}
+--- !u!114 &1272691890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272691883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d88bd51465ca2ba4981b24a705d55f4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  follow: {fileID: 757972721}
+  scaleOffset: -3
+  isHorizontal: 1
+  isVertical: 1
 --- !u!1001 &1299544923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1188,7 +1210,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2db002f6ad12e9e41a5f7cf2bb23c2f6, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2db002f6ad12e9e41a5f7cf2bb23c2f6, type: 3}
       propertyPath: m_LocalScale.x
