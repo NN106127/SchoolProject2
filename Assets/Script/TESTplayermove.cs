@@ -196,7 +196,7 @@ public class TESTplayermove : MonoBehaviour
         ishurt = true;
         if (isHealing == false)
         { 
-            HPbar.transform.Translate(-2f, 0, 0);
+            HPbar.transform.Translate(-0.1f, 0, 0);
             //m_Animator.SetInteger("Status", 6);
         }
     }

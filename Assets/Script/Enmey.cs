@@ -38,6 +38,12 @@ public class Enmey : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //作弊
+        if(Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            Destroy(gameObject);
+            gameObject.SetActive(false);
+        }
         // 改狀態為追逐的判斷
         float dist = Vector3.Distance(transform.position, TargetPlayer.transform.position);
         if (dist < TraceRadius)
