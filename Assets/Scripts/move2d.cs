@@ -65,6 +65,14 @@ public class move2d : MonoBehaviour
             {
                 MoveDirection.y = JumpSpeed;
                 m_Animator.SetInteger("Status", 3);
+                if (transform.rotation.y == 0)
+                {
+                    MoveDirection.z += 1f;
+                }
+                else
+                {
+                    MoveDirection.z += -1f;
+                }
             }
         }
 
