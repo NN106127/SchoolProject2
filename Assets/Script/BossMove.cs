@@ -24,13 +24,12 @@ public class BossMove : MonoBehaviour
         float dist = Vector3.Distance(transform.position, TargetPlayer.transform.position);
         if (dist < TraceRadius)
         {
-            Vector3 relativePos = TargetPlayer.transform.position - transform.position;
+            /*Vector3 relativePos = TargetPlayer.transform.position - transform.position;
             Quaternion targetRotation = Quaternion.LookRotation(relativePos);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, TurnSpeed * Time.deltaTime);
-            Speed = 10f;
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, TurnSpeed * Time.deltaTime);*/
             Vector3 dir = (TargetPlayer.transform.position - transform.position).normalized;
             controller.Move(dir * Speed * Time.deltaTime);
-            if (dist < radius)
+            /*if (dist < radius)
             {
                 Speed = 0;
                 controller.Move(dir * Speed * Time.deltaTime);
@@ -39,7 +38,7 @@ public class BossMove : MonoBehaviour
             {
                 Speed = 0;
                 controller.Move(dir * Speed * Time.deltaTime);
-            }
+            }*/
         }
     }
     private void OnDrawGizmos()
