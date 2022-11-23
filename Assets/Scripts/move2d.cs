@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class move2d : MonoBehaviour
 {
+    float y = 0;
     public float WalkSpeed = 5.0f;
     public float RunSpeed = 2.5f;
     public float JumpSpeed = 25.0f;
@@ -44,7 +45,7 @@ public class move2d : MonoBehaviour
 
             if ( Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
-               
+                
                 MoveDirection *= WalkSpeed;
                 //m_Animator.SetFloat("movespeed", 1);
                 m_Animator.SetInteger("Status", 1);

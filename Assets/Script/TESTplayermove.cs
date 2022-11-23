@@ -88,8 +88,8 @@ public class TESTplayermove : MonoBehaviour
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
                 y = 0;
-                //MoveDirection *= WalkSpeed;
                 transform.rotation = Quaternion.Euler(new Vector3(0, y, 0));
+                //MoveDirection *= WalkSpeed;
                 m_Animator.SetInteger("Status", 1);
             }
 
