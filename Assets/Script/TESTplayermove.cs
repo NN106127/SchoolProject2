@@ -204,7 +204,7 @@ public class TESTplayermove : MonoBehaviour
         ishurt = true;
         if (isHealing == false)
         { 
-            HPbar.transform.Translate(-0.1f, 0, 0);
+            HPbar.transform.Translate(-0.5f, 0, 0);
             //m_Animator.SetInteger("Status", 6);
         }
     }
@@ -277,6 +277,7 @@ public class TESTplayermove : MonoBehaviour
             //t_Gameoverr.text = "Game Over";
             if (hurtTime >= 3)
             {
+                Debug.Log(1);
                 Destroy(gameObject);
                 LoadScene();
             }

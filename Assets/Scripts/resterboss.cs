@@ -19,7 +19,7 @@ public class resterboss : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
 
-        if (gameObject.tag == "restart")
+        if (other.gameObject.tag == "Player")
         {
 
 

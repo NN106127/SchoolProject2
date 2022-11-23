@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
+    private Animator m_Animator;
     public GameObject TargetPlayer;// 玩家
     public GameObject bullet;
     public GameObject firePoint;
@@ -30,6 +31,9 @@ public class Boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_Animator = GetComponent<Animator>();
+        GetComponent<Animator>().SetBool("aoe", false);
+        GetComponent<Animator>().SetBool("atk", false);
         bossbar.SetActive(false);
         controller = GetComponent<CharacterController>();
         Effect01.SetActive(false);
@@ -56,6 +60,8 @@ public class Boss : MonoBehaviour
 
         if (status == "Random")
         {
+            GetComponent<Animator>().SetBool("aoe", false);
+            GetComponent<Animator>().SetBool("atk", false);
             n = 0;
             Effect01.SetActive(false);
             Effect02.SetActive(false);
@@ -68,9 +74,11 @@ public class Boss : MonoBehaviour
 
         if (status == "Cold")
         {
+            
             DoColdTime();
             if (ColdTimer >= 3)
             {
+                
                 Debug.Log("Random");
                 prevStatus = status;
                 status = "Random";
@@ -81,8 +89,10 @@ public class Boss : MonoBehaviour
         {
             if (i == 1)
             {
+               // GetComponent<Animator>().SetBool("atk", true);
                 if (n == 0)
                 {
+                    
                     DoSkill01();
                     n = 1;
                     prevStatus = status;
@@ -92,6 +102,7 @@ public class Boss : MonoBehaviour
 
             if (i == 2)
             {
+               // GetComponent<Animator>().SetBool("aoe", true);
                 DoSkill02();
                 prevStatus = status;
                 status = "Cold";
@@ -99,6 +110,7 @@ public class Boss : MonoBehaviour
 
             if (i == 3)
             {
+                //GetComponent<Animator>().SetBool("aoe", true);
                 DoSkill03();
                 prevStatus = status;
                 status = "Cold";
@@ -106,6 +118,7 @@ public class Boss : MonoBehaviour
 
             if (i == 4)
             {
+                //GetComponent<Animator>().SetBool("aoe", true);
                 DoSkill04();
                 prevStatus = status;
                 status = "Cold";
@@ -125,19 +138,23 @@ public class Boss : MonoBehaviour
 
     void DoSkill01()  // 技能一
     {
+        GetComponent<Animator>().SetBool("atk", true);
         Instantiate(bullet, firePoint.transform.position, transform.rotation);
     }
 
     void DoSkill02()  // 技能二
     {
+        GetComponent<Animator>().SetBool("aoe", true);
         Effect01.SetActive(true);
     }
     void DoSkill03()  // 技能二
     {
+        GetComponent<Animator>().SetBool("aoe", true);
         Effect02.SetActive(true);
     }
     void DoSkill04()  // 技能二
     {
+        GetComponent<Animator>().SetBool("aoe", true);
         Effect03.SetActive(true);
     }
 
@@ -154,4 +171,5 @@ public class Boss : MonoBehaviour
             currHp -= 100;
         }
     }
+
 }

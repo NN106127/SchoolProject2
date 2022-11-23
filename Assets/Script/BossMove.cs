@@ -11,10 +11,12 @@ public class BossMove : MonoBehaviour
     public float TraceRadius;// °l³v¶ZÂ÷
     public float Speed;
     private CharacterController controller;
+    private Animator m_Animator;
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        m_Animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,6 +26,7 @@ public class BossMove : MonoBehaviour
         float dist = Vector3.Distance(transform.position, TargetPlayer.transform.position);
         if (dist < TraceRadius)
         {
+            GetComponent<Animator>().SetBool("walk", true);
             /*Vector3 relativePos = TargetPlayer.transform.position - transform.position;
             Quaternion targetRotation = Quaternion.LookRotation(relativePos);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, TurnSpeed * Time.deltaTime);*/
