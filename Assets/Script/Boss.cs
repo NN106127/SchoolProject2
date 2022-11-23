@@ -27,10 +27,6 @@ public class Boss : MonoBehaviour
     public RectTransform barSet;
     public float maxHp = 500;
     public float currHp = 500;
-
-
-    public float TraceRadius;// °l³v¶ZÂ÷
-    public float Speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -115,14 +111,6 @@ public class Boss : MonoBehaviour
                 status = "Cold";
             }
         }
-
-        // °l³v
-        float dist = Vector3.Distance(transform.position, TargetPlayer.transform.position);
-        if(dist <= 30)
-        {
-            Vector3 dir = (TargetPlayer.transform.position - transform.position).normalized;
-            controller.Move(dir * Speed * Time.deltaTime);
-        }
     }
 
     void DoColdTime() // §N«o®É¶¡
@@ -166,11 +154,4 @@ public class Boss : MonoBehaviour
             currHp -= 100;
         }
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, TraceRadius);
-    }
-
 }
