@@ -27,55 +27,49 @@ public class move2d : MonoBehaviour
         CharacterController boy = GetComponent<CharacterController>();
         m_Animator.SetInteger("Status", 0);
 
-
+        float currSpeed = WalkSpeed;
         if (boy.isGrounded)
         {
-
             MoveDirection = new Vector3(0, 0, Input.GetAxis("Horizontal"));
-            MoveDirection = transform.TransformDirection(MoveDirection);
 
-            if(Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
                 y = 180;
                 transform.rotation = Quaternion.Euler(new Vector3(0, y, 0));
-                MoveDirection *= -WalkSpeed;
-                //m_Animator.SetFloat("movespeed", 1);
+                //MoveDirection *= -WalkSpeed;
                 m_Animator.SetInteger("Status", 1);
             }
-            
 
-            if ( Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
                 y = 0;
                 transform.rotation = Quaternion.Euler(new Vector3(0, y, 0));
-                MoveDirection *= WalkSpeed;
-                //m_Animator.SetFloat("movespeed", 1);
+                //MoveDirection *= WalkSpeed;
                 m_Animator.SetInteger("Status", 1);
             }
-            
 
 
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                MoveDirection *= RunSpeed;
-                m_Animator.SetInteger("Status", 2);
-                //m_Animator.SetFloat("movespeed", 2);
+                currSpeed = RunSpeed;
+                if (RunSpeed >= 0)
+                {
+                    m_Animator.SetInteger("Status", 2);
+                }
+                //m_Animator.SetInteger("Status", 2);
             }
-            
+
 
             if (Input.GetButton("Jump"))
             {
                 MoveDirection.y = JumpSpeed;
                 m_Animator.SetInteger("Status", 3);
-                // m_Animator.SetFloat("movespeed", 25);
             }
-            
-
         }
 
-        
         MoveDirection.y -= Gravity * Time.deltaTime;
 
-        boy.Move(MoveDirection * Time.deltaTime);
+        boy.Move((MoveDirection * currSpeed) * Time.deltaTime);
     }
 }

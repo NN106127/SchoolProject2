@@ -471,7 +471,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 1.21, y: 10.56, z: 0}
+  m_Center: {x: 0, y: 10.56, z: 0}
 --- !u!95 &137355331
 Animator:
   serializedVersion: 3
@@ -504,9 +504,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WalkSpeed: 6
-  RunSpeed: 2.5
-  JumpSpeed: 30
-  Gravity: 50
+  RunSpeed: 25
+  JumpSpeed: 9
+  Gravity: 13
   RotateSpeed: 0.5
 --- !u!1 &217032425
 GameObject:
@@ -781,7 +781,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929640791}
   m_LocalRotation: {x: 0.6827064, y: -0, z: -0, w: 0.7306928}
-  m_LocalPosition: {x: 0.009155512, y: -0.2605, z: 0.229}
+  m_LocalPosition: {x: 0.009155512, y: -0.2509, z: 0.226}
   m_LocalScale: {x: 0.0091816215, y: 0.009181621, z: 0.009181622}
   m_Children: []
   m_Father: {fileID: 1071245236}
@@ -935,7 +935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 84a61e9b497092741b345309ac97c26b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 62.6
+      value: 61.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 84a61e9b497092741b345309ac97c26b, type: 3}
       propertyPath: m_LocalRotation.w
