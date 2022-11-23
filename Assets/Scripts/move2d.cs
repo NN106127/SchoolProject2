@@ -36,8 +36,9 @@ public class move2d : MonoBehaviour
 
             if(Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.LeftArrow))
             {
-                
-                MoveDirection *= WalkSpeed;
+                y = 180;
+                transform.rotation = Quaternion.Euler(new Vector3(0, y, 0));
+                MoveDirection *= -WalkSpeed;
                 //m_Animator.SetFloat("movespeed", 1);
                 m_Animator.SetInteger("Status", 1);
             }
@@ -45,7 +46,8 @@ public class move2d : MonoBehaviour
 
             if ( Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
-                
+                y = 0;
+                transform.rotation = Quaternion.Euler(new Vector3(0, y, 0));
                 MoveDirection *= WalkSpeed;
                 //m_Animator.SetFloat("movespeed", 1);
                 m_Animator.SetInteger("Status", 1);
