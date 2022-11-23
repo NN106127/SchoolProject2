@@ -53,5 +53,11 @@ public class UIFollow : MonoBehaviour
         {
             MonBar.SetActive(false);
         }
+
+        if(Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            Debug.Log("Deeeee");
+            Destroy(gameObject);
+        }
     }
 }

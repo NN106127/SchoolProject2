@@ -30,12 +30,19 @@ public class pickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            Debug.Log("Apha9");
+            image1.SetActive(true);
+            image2.SetActive(true);
+            image3.SetActive(true);
+            image4.SetActive(true);
+            image5.SetActive(true);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        
         if (gameObject.name == "клл~")
         {
             

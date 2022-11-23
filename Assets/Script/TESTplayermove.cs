@@ -109,6 +109,14 @@ public class TESTplayermove : MonoBehaviour
             {
                 MoveDirection.y = JumpSpeed;
                m_Animator.SetInteger("Status", 3);
+                if(transform.rotation.y == 0)
+                {
+                    MoveDirection.z += 1f;
+                }
+                else
+                {
+                    MoveDirection.z += -1f;
+                }
             }
         }
 
@@ -196,7 +204,7 @@ public class TESTplayermove : MonoBehaviour
         ishurt = true;
         if (isHealing == false)
         { 
-            HPbar.transform.Translate(-2f, 0, 0);
+            HPbar.transform.Translate(-0.1f, 0, 0);
             //m_Animator.SetInteger("Status", 6);
         }
     }

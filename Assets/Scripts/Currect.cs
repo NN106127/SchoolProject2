@@ -76,5 +76,11 @@ public class Currect : MonoBehaviour
             }
         }
         
+        if(Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            m_text.text = "謎題已解開，前方道路已開啟";
+            door.SetActive(true);
+            PluzzCavcas.SetActive(false);
+        }
     }
 }
