@@ -174,7 +174,7 @@ public class TESTplayermove : MonoBehaviour
         }
         if (isHealing)
         {
-            HPbar.transform.Translate(0.1f, 0, 0);
+            HPbar.transform.Translate(0.3f, 0, 0);
             currentHealingTime += Time.deltaTime;
             if(HPbar.transform.localPosition.x >= 0)//¦^¦å·¸¥X
             {

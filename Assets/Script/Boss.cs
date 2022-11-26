@@ -58,6 +58,18 @@ public class Boss : MonoBehaviour
             bossbar.SetActive(false);
         }
 
+        if(currHp <= 0)
+        {
+            status = "Dead";
+            Debug.Log("Boss Dead");
+            Destroy(gameObject,2);
+        }
+
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            currHp -= 100;
+        }
+
         if (status == "Random")
         {
             GetComponent<Animator>().SetBool("aoe", false);
@@ -83,6 +95,13 @@ public class Boss : MonoBehaviour
                 prevStatus = status;
                 status = "Random";
             }
+        }
+
+        if(status == "Dead")
+        {
+            Effect01.SetActive(false);
+            Effect02.SetActive(false);
+            Effect03.SetActive(false);
         }
 
         if (status == "Atk")
