@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Video;
+using UnityEngine.SceneManagement;
+
 
 public class Boss : MonoBehaviour
 {
@@ -19,6 +23,7 @@ public class Boss : MonoBehaviour
     public float ColdTimer = 0;//技能之間冷卻
 
     // Boss血條
+    public GameObject bosscharter;
     public Boss boss;
     public const int maxHealth = 500;
     public int currentHealth = maxHealth;
@@ -28,6 +33,10 @@ public class Boss : MonoBehaviour
     public RectTransform barSet;
     public float maxHp = 500;
     public float currHp = 500;
+    //影片
+    public float bosstime=0;
+    public VideoPlayer aaa;
+    public GameObject img;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,7 +71,10 @@ public class Boss : MonoBehaviour
         {
             status = "Dead";
             Debug.Log("Boss Dead");
-            Destroy(gameObject,2);
+            Destroy(gameObject,20);
+            //bosscharter.SetActive(false);
+            
+
         }
 
         if(Input.GetKeyDown(KeyCode.P))
@@ -99,9 +111,20 @@ public class Boss : MonoBehaviour
 
         if(status == "Dead")
         {
+            
             Effect01.SetActive(false);
             Effect02.SetActive(false);
             Effect03.SetActive(false);
+            bosstime += Time.deltaTime;
+            img.SetActive(true);
+            aaa.Play();
+            if (bosstime >= 19)
+            {
+                Debug.Log(1);
+                img.SetActive(false);
+                SceneManager.LoadScene(0);
+            }
+
         }
 
         if (status == "Atk")
@@ -191,4 +214,4 @@ public class Boss : MonoBehaviour
         }
     }
 
-}
+    }
