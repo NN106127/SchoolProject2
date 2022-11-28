@@ -10,7 +10,7 @@ public class startbutton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        DontDestroyOnLoad(m_audio);
     }
 
     // Update is called once per frame
@@ -29,6 +29,7 @@ public class startbutton : MonoBehaviour
 
     public void QuitGame()
     {
+        m_audio.Play();
         Application.Quit();
     }
 
