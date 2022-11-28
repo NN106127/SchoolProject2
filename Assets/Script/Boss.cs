@@ -40,6 +40,7 @@ public class Boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Hurt.sizeDelta = new Vector2(boss.currHp, HealthBar.sizeDelta.y);
         m_Animator = GetComponent<Animator>();
         GetComponent<Animator>().SetBool("aoe", false);
         GetComponent<Animator>().SetBool("atk", false);

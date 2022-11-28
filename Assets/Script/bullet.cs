@@ -30,4 +30,11 @@ public class bullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Rock")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

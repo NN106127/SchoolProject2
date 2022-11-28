@@ -36,7 +36,7 @@ public class RockController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Plane") //必須大小寫一樣
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "bullet") //必須大小寫一樣
         {
             Debug.Log("hit Plane");
             Destroy(gameObject);
