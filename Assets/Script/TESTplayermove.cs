@@ -212,6 +212,7 @@ public class TESTplayermove : MonoBehaviour
     {
         if (other.gameObject.tag == "Death")
         {
+
             DeadZone();
             return;
         }
@@ -221,6 +222,7 @@ public class TESTplayermove : MonoBehaviour
     {
         if(other.gameObject.tag == "Rock")
         {
+            ishurt = true;
             Debug.Log("RRRRRR");
             HPbar.transform.Translate(-80f, 0, 0);
         }
@@ -288,8 +290,16 @@ public class TESTplayermove : MonoBehaviour
         }
         void LoadScene()
         {
-            hurtTime = 0;
-            SceneManager.LoadScene(4);
+            if (Application.loadedLevel == 4)
+            {
+                hurtTime = 0;
+                SceneManager.LoadScene(4);
+            }
+            else
+            {
+                SceneManager.LoadScene(5);
+            }
+            
         }
     }
 }

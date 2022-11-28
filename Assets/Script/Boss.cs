@@ -53,6 +53,7 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         //將綠色血條同步到當前血量長度
         HealthBar.sizeDelta = new Vector2(boss.currHp, HealthBar.sizeDelta.y);
 
@@ -100,7 +101,7 @@ public class Boss : MonoBehaviour
         {
             
             DoColdTime();
-            if (ColdTimer >= 3)
+            if (ColdTimer >= 5)
             {
                 
                 Debug.Log("Random");
@@ -131,7 +132,8 @@ public class Boss : MonoBehaviour
         {
             if (i == 1)
             {
-               // GetComponent<Animator>().SetBool("atk", true);
+                //m_Animator.SetInteger("Status", 1);
+                GetComponent<Animator>().SetBool("atk", true);
                 if (n == 0)
                 {
                     
@@ -144,7 +146,8 @@ public class Boss : MonoBehaviour
 
             if (i == 2)
             {
-               // GetComponent<Animator>().SetBool("aoe", true);
+                //m_Animator.SetInteger("Status", 2);
+                GetComponent<Animator>().SetBool("aoe", true);
                 DoSkill02();
                 prevStatus = status;
                 status = "Cold";
@@ -152,7 +155,8 @@ public class Boss : MonoBehaviour
 
             if (i == 3)
             {
-                //GetComponent<Animator>().SetBool("aoe", true);
+                //m_Animator.SetInteger("Status", 2);
+                GetComponent<Animator>().SetBool("aoe", true);
                 DoSkill03();
                 prevStatus = status;
                 status = "Cold";
@@ -160,16 +164,19 @@ public class Boss : MonoBehaviour
 
             if (i == 4)
             {
-                //GetComponent<Animator>().SetBool("aoe", true);
+                //m_Animator.SetInteger("Status", 2);
+                GetComponent<Animator>().SetBool("aoe", true);
                 DoSkill04();
                 prevStatus = status;
                 status = "Cold";
             }
         }
+
     }
 
     void DoColdTime() // 冷卻時間
     {
+
         ColdTimer += Time.deltaTime;
     }
 
@@ -180,22 +187,28 @@ public class Boss : MonoBehaviour
 
     void DoSkill01()  // 技能一
     {
+        //m_Animator.SetInteger("Status", 1);
         GetComponent<Animator>().SetBool("atk", true);
         Instantiate(bullet, firePoint.transform.position, transform.rotation);
     }
 
     void DoSkill02()  // 技能二
     {
+        //m_Animator.SetInteger("Status", 2);
         GetComponent<Animator>().SetBool("aoe", true);
         Effect01.SetActive(true);
     }
+    
     void DoSkill03()  // 技能二
     {
+
+        //m_Animator.SetInteger("Status", 2);
         GetComponent<Animator>().SetBool("aoe", true);
         Effect02.SetActive(true);
     }
     void DoSkill04()  // 技能二
     {
+        //m_Animator.SetInteger("Status", 2);
         GetComponent<Animator>().SetBool("aoe", true);
         Effect03.SetActive(true);
     }
@@ -210,7 +223,7 @@ public class Boss : MonoBehaviour
 
         if (other.gameObject.tag == "bullet")
         {
-            currHp -= 100;
+            currHp -= 75;
         }
     }
 

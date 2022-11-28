@@ -128,6 +128,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5190971593697094266, guid: 8dc823ef1c621744589fc06dae7682ee, type: 3}
   m_PrefabInstance: {fileID: 1031254007}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &10445192
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10445185}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 11, z: 11}
+  m_Center: {x: -0.18, y: 4.5, z: 0}
 --- !u!1 &16244554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2828,6 +2841,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 615769428, guid: 8dc823ef1c621744589fc06dae7682ee, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 615769429, guid: 8dc823ef1c621744589fc06dae7682ee, type: 3}
       propertyPath: aaa
       value: 
