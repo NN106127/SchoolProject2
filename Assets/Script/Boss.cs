@@ -8,6 +8,10 @@ using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
+    public AudioSource bossmusic;
+    public AudioSource atk1;
+    public AudioSource atk2;
+    public AudioSource hurt;
     private Animator m_Animator;
     public GameObject TargetPlayer;// ª±®a
     public GameObject bullet;
@@ -71,16 +75,21 @@ public class Boss : MonoBehaviour
 
         if(currHp <= 0)
         {
-            status = "Dead";
-            Debug.Log("Boss Dead");
-            Destroy(gameObject,20);
-            //bosscharter.SetActive(false);
             
+            status = "Dead";
+            
+            Destroy(gameObject,21);
+            bossmusic = GameObject.FindGameObjectWithTag("music").GetComponent<AudioSource>();
+            bossmusic.Stop();
+            
+            //bosscharter.SetActive(false);
+
 
         }
 
         if(Input.GetKeyDown(KeyCode.P))
         {
+            hurt.Play();
             currHp -= 100;
         }
 
@@ -122,9 +131,10 @@ public class Boss : MonoBehaviour
             aaa.Play();
             if (bosstime >= 19)
             {
-                Debug.Log(1);
-                img.SetActive(false);
+
+                //img.SetActive(false);
                 SceneManager.LoadScene(0);
+
             }
 
         }
@@ -133,6 +143,7 @@ public class Boss : MonoBehaviour
         {
             if (i == 1)
             {
+                atk2.Play();
                 //m_Animator.SetInteger("Status", 1);
                 GetComponent<Animator>().SetBool("atk", true);
                 if (n == 0)
@@ -147,6 +158,7 @@ public class Boss : MonoBehaviour
 
             if (i == 2)
             {
+                atk1.Play();
                 //m_Animator.SetInteger("Status", 2);
                 GetComponent<Animator>().SetBool("aoe", true);
                 DoSkill02();
@@ -156,6 +168,7 @@ public class Boss : MonoBehaviour
 
             if (i == 3)
             {
+                atk1.Play();
                 //m_Animator.SetInteger("Status", 2);
                 GetComponent<Animator>().SetBool("aoe", true);
                 DoSkill03();
@@ -165,6 +178,7 @@ public class Boss : MonoBehaviour
 
             if (i == 4)
             {
+                atk1.Play();
                 //m_Animator.SetInteger("Status", 2);
                 GetComponent<Animator>().SetBool("aoe", true);
                 DoSkill04();
@@ -224,6 +238,7 @@ public class Boss : MonoBehaviour
 
         if (other.gameObject.tag == "bullet")
         {
+            hurt.Play();
             currHp -= 75;
         }
     }
