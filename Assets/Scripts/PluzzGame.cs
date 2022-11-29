@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PluzzGame : MonoBehaviour
 {
+    public AudioSource puzzlemove;
     public GameObject img;
     public GameObject target;
     public GameObject Currect;
@@ -24,6 +25,7 @@ public class PluzzGame : MonoBehaviour
     {
         if (((Mathf.Abs(img.transform.position.x - target.transform.position.x) <= 125) && (img.transform.position.y == target.transform.position.y)) || ((Mathf.Abs(img.transform.position.y - target.transform.position.y) <= 125) && (img.transform.position.x == target.transform.position.x)))
         {
+            puzzlemove.Play();
             Vector2 tmp = target.transform.position;
             target.transform.position = img.transform.position;
             img.transform.position = tmp;

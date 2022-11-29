@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class move2d : MonoBehaviour
 {
+    
     float y = 0;
     public float WalkSpeed = 5.0f;
     public float RunSpeed = 2.5f;
@@ -30,10 +31,12 @@ public class move2d : MonoBehaviour
         float currSpeed = WalkSpeed;
         if (boy.isGrounded)
         {
+            
             MoveDirection = new Vector3(0, 0, Input.GetAxis("Horizontal"));
 
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
+                
                 y = 180;
                 transform.rotation = Quaternion.Euler(new Vector3(0, y, 0));
                 //MoveDirection *= -WalkSpeed;
@@ -43,6 +46,7 @@ public class move2d : MonoBehaviour
 
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
+                
                 y = 0;
                 transform.rotation = Quaternion.Euler(new Vector3(0, y, 0));
                 //MoveDirection *= WalkSpeed;
@@ -52,9 +56,11 @@ public class move2d : MonoBehaviour
 
             if (Input.GetKey(KeyCode.LeftShift))
             {
+                
                 currSpeed = RunSpeed;
                 if (RunSpeed >= 0)
                 {
+                    
                     m_Animator.SetInteger("Status", 2);
                 }
                 //m_Animator.SetInteger("Status", 2);

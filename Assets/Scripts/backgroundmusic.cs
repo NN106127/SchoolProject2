@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class restart : MonoBehaviour
+public class backgroundmusic : MonoBehaviour
 {
-
-    
-
+    public AudioSource m_audio1;
+   
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(m_audio1);
+        
+        m_audio1.Play();
         
     }
 
@@ -18,18 +20,6 @@ public class restart : MonoBehaviour
     void Update()
     {
         
-    }
-     void OnTriggerEnter(Collider other)
-    {
-        
-        if (gameObject.tag == "restart")
-        {
 
-            
-            SceneManager.LoadScene(2);
-            
-
-        }
     }
-    
-}
+    }

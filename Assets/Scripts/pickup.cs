@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class pickup : MonoBehaviour
 {
+    public AudioSource getsound;
     //public GameObject Object;//在地上的物品
     //public GameObject OnCoin;//在手上的物品
     public Text m_text;
@@ -32,6 +33,7 @@ public class pickup : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha9))
         {
+            getsound.Play();
             Debug.Log("Apha9");
             image1.SetActive(true);
             image2.SetActive(true);
@@ -71,6 +73,7 @@ public class pickup : MonoBehaviour
     {
         if (gameObject.name == "物品" && Input.GetKeyDown(KeyCode.E))
         {
+            getsound.Play();
             //OnCoin.SetActive(true);//腳色觸碰後顯示
             // Object.SetActive(false);
             image1.SetActive(true);
@@ -78,21 +81,25 @@ public class pickup : MonoBehaviour
         }
         else if (gameObject.name == "物品 (1)" && Input.GetKeyDown(KeyCode.E))
         {
+            getsound.Play();
             image2.SetActive(true);
             m_text.text = "";
         }
         else if (gameObject.name == "物品 (2)" && Input.GetKeyDown(KeyCode.E))
         {
+            getsound.Play();
             image3.SetActive(true);
             m_text.text = "";
         }
         else if (gameObject.name == "物品 (3)" && Input.GetKeyDown(KeyCode.E))
         {
+            getsound.Play();
             image4.SetActive(true);
             m_text.text = "";
         }
         else if (gameObject.name == "物品 (4)" && Input.GetKeyDown(KeyCode.E))
         {
+            getsound.Play();
             image5.SetActive(true);
             m_text.text = "";
         }

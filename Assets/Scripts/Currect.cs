@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Currect : MonoBehaviour
 {
+    public AudioSource pass;
     public GameObject img;
     public GameObject img1;
     public GameObject img2;
@@ -59,7 +60,7 @@ public class Currect : MonoBehaviour
 
                                         if (img7.transform.position.x == cur7.transform.position.x && img7.transform.position.y == cur7.transform.position.y)
                                         {
-                                            
+                                            pass.Play();
                                             m_text.text = "謎題已解開，前方道路已開啟";
                                             door.SetActive(true);
                                             PluzzCavcas.SetActive(false);
@@ -78,6 +79,7 @@ public class Currect : MonoBehaviour
         
         if(Input.GetKeyDown(KeyCode.Alpha0))
         {
+            pass.Play();
             m_text.text = "謎題已解開，前方道路已開啟";
             door.SetActive(true);
             PluzzCavcas.SetActive(false);

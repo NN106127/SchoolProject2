@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PluzzStart : MonoBehaviour
 {
+    public AudioSource getsound;
     public GameObject PluzzCanvas;
     public Text StartPluzzText;
     public Text errortext;
@@ -44,6 +45,7 @@ public class PluzzStart : MonoBehaviour
         
         if (gameObject.tag == "PluzzStart" && Input.GetKeyDown(KeyCode.E))
         {
+            getsound.Play();
             errortext.text = "";
 
             if ( image1.activeSelf && image2.activeSelf && image3.activeSelf && image4.activeSelf && image5.activeSelf)

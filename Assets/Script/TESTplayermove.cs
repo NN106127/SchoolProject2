@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class TESTplayermove : MonoBehaviour
 {
+    public AudioSource atk;
+    public AudioSource hurt;
+    public AudioSource health;
     //¨¤¦â±±¨î
     float y = 0;
     public float WalkSpeed = 5.0f;
@@ -51,6 +54,9 @@ public class TESTplayermove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(atk);
+        DontDestroyOnLoad(hurt);
+        DontDestroyOnLoad(health);
         m_Animator = GetComponent<Animator>();
         text.text = "";
         //t_Gameoverr.text = "";
@@ -139,6 +145,7 @@ public class TESTplayermove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            health.Play();
            m_Animator.SetInteger("Status", 4);
             SkillQ();
             isHealth = true;
@@ -146,6 +153,7 @@ public class TESTplayermove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            atk.Play();
            m_Animator.SetInteger("Status", 5);
             SkillB();
             isFire = true;
@@ -190,6 +198,7 @@ public class TESTplayermove : MonoBehaviour
 
         if (ishurt == true)
         {
+            hurt.Play();
             GetComponent<Animator>().SetBool("hurt", true);
             ishurt = false;
         }
@@ -203,7 +212,8 @@ public class TESTplayermove : MonoBehaviour
     {
         ishurt = true;
         if (isHealing == false)
-        { 
+        {
+            
             HPbar.transform.Translate(-0.5f, 0, 0);
             //m_Animator.SetInteger("Status", 6);
         }
@@ -224,6 +234,7 @@ public class TESTplayermove : MonoBehaviour
         {
             ishurt = true;
             Debug.Log("RRRRRR");
+            
             HPbar.transform.Translate(-80f, 0, 0);
         }
     }

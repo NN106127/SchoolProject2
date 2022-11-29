@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enmey : MonoBehaviour
 {
+    public AudioSource hurt;
+    
     public GameObject TargetPlayer;
     public float Speed;      // 走路速度
     public float TurnSpeed;  // 轉向速度
@@ -61,7 +63,7 @@ public class Enmey : MonoBehaviour
                 {
                     Destroy(gameObject, 2);
                 }
-
+                
                 status = "atk";
                 GetComponent<Animator>().SetBool("status", true);
 
@@ -98,6 +100,7 @@ public class Enmey : MonoBehaviour
 
         if(status == "atk")
         {
+            
             DoATK();
         }
     }
@@ -132,7 +135,7 @@ public class Enmey : MonoBehaviour
 
     void DoATK()
     {
-       
+        
     }
 
     void DoDead()
@@ -171,6 +174,7 @@ public class Enmey : MonoBehaviour
     {
         if (other.gameObject.tag == "bullet")
         {
+            hurt.Play();
             Debug.Log("Hit");
             currHp -= 175;
         }

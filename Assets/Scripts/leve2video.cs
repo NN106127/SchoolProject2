@@ -6,6 +6,7 @@ using UnityEngine.Video;
 
 public class leve2video : MonoBehaviour
 {
+    public GameObject boss;
     public int m_seconds;                 //计璸竒传衡羆计
     public VideoPlayer aaa;
     public int m_min;              //ノ砞﹚计璸だ牧
@@ -29,7 +30,7 @@ public class leve2video : MonoBehaviour
 
         if (other.tag == "Player")
         {
-
+            boss.SetActive(false);
             img.SetActive(true);
             aaa.Play();
             StartCoroutine(Countdown());
