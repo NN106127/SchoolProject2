@@ -1,0 +1,33 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class escbutton : MonoBehaviour
+{
+    public AudioSource m_audio;
+    // Start is called before the first frame update
+    void Start()
+    {
+        DontDestroyOnLoad(m_audio);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+    public void ChangeScence(string scencename)
+    {
+        
+        m_audio.Play();
+        SceneManager.LoadScene(0);
+        SceneManager.LoadSceneAsync(scencename);
+
+    }
+    public void QuitGame()
+    {
+        m_audio.Play();
+        Application.Quit();
+    }
+}

@@ -22,6 +22,8 @@ TagManager:
   - Coin4
   - background
   - music
+  - sound
+  - buttonmisic
   layers:
   - Default
   - TransparentFX
