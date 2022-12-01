@@ -139,6 +139,11 @@ public class Boss : MonoBehaviour
 
             }
 
+            if (Input.GetKey(KeyCode.Space))
+            {
+                SceneManager.LoadScene(0);
+            }
+
         }
 
         if (status == "Atk")

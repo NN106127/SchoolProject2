@@ -20,8 +20,15 @@ public class videoplay : MonoBehaviour
     void Start()
     {
         StartCoroutine(Countdown());   //呼叫倒數計時的協程
+        
     }
-
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            SceneManager.LoadScene(2);
+        }
+    }
     IEnumerator Countdown()
     {
         

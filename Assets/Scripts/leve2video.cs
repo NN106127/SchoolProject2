@@ -33,18 +33,31 @@ public class leve2video : MonoBehaviour
             boss.SetActive(false);
             img.SetActive(true);
             aaa.Play();
+            
             StartCoroutine(Countdown());
-
-
+        }
+        
+        
+    }
+    void OnTriggerStay(Collider other)
+    {
+        if (aaa.isPlaying)
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                img.SetActive(false);
+            }
         }
     }
     IEnumerator Countdown()
     {
         
+
         m_seconds = (m_min * 60) + m_sec;       //將時間換算為秒數
 
         while (m_seconds > 0)                   //如果時間尚未結束
         {
+            
             yield return new WaitForSeconds(1); //等候一秒再次執行
 
             m_seconds--;                        //總秒數減 1
@@ -59,7 +72,7 @@ public class leve2video : MonoBehaviour
             {
                 m_sec = 0;                      //設定秒數等於 0
             }
-
+            
         }
 
         yield return new WaitForSeconds(1);   //時間結束時，顯示 00:00 停留一秒
