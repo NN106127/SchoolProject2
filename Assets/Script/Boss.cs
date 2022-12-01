@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
+using System.Threading;
 
 
 public class Boss : MonoBehaviour
@@ -131,7 +132,8 @@ public class Boss : MonoBehaviour
             aaa.Play();
             if (bosstime >= 19)
             {
-
+                Debug.Log(bosstime);
+                Thread.Sleep(1000);
                 //img.SetActive(false);
                 SceneManager.LoadScene(0);
 

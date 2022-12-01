@@ -6339,6 +6339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4559ede224e24c4419e0fa3508b3ab40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boss: {fileID: 0}
   atk: {fileID: 1613358374}
   hurt: {fileID: 2013728074}
   health: {fileID: 1038143045}
