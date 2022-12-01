@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class TESTplayermove : MonoBehaviour
 {
+    public GameObject boss;
     public AudioSource atk;
     public AudioSource hurt;
     public AudioSource health;
@@ -226,8 +227,20 @@ public class TESTplayermove : MonoBehaviour
             DeadZone();
             return;
         }
+        
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "boss")
+        {
+            DeadZone();
+            
+            /*HPbar.transform.Translate(-500f, 0, 0);
+            hurt.Play();
+            boss.SetActive(false);
+            GetComponent<Animator>().SetBool("die", true);*/
+        }
+    }
     public void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.tag == "Rock")
@@ -237,6 +250,7 @@ public class TESTplayermove : MonoBehaviour
             
             HPbar.transform.Translate(-80f, 0, 0);
         }
+        
     }
     public void SkillB()//攻擊技能(單純控制冷卻)
     {
