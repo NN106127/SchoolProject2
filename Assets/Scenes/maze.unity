@@ -15714,7 +15714,7 @@ MonoBehaviour:
   RunSpeed: 2.5
   JumpSpeed: 18
   Gravity: 50
-  RotateSpeed: 0.7
+  RotateSpeed: 0.6
 --- !u!95 &1896838844
 Animator:
   serializedVersion: 3

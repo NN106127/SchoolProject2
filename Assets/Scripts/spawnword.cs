@@ -25,7 +25,7 @@ public class spawnword : MonoBehaviour
     {
         if (gameObject.tag == "spawn")
         {
-            m_text.text = "成功逃離迷宮!獲得火球能力!";
+            m_text.text = "成功逃離迷宮!獲得攻擊能力!";
             s_text.text = "按'E'施放";
             t_text.text = "繼續前行!";
 
