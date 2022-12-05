@@ -79,13 +79,14 @@ public class Enmey : MonoBehaviour
         // ¨µÅÞª¬ºA
         if (status == "patrol")
         {
-            if (currHp <= 0)
-            {
-                Destroy(gameObject,2);
-            }
             // ¨µÅÞ¦æ¬°
             DoPatrol();
             Timer = 0;
+        }
+
+        if (currHp <= 0)
+        {
+            status = "dead";
         }
 
         if (status == "chasing")
@@ -112,7 +113,7 @@ public class Enmey : MonoBehaviour
 
         transform.LookAt(target[i]);
 
-        transform.Translate(Vector3.forward * Time.deltaTime * Speed);
+        transform.Translate(Vector3.forward * Time.deltaTime * 5);
 
         if (transform.position.x > target[i].position.x - delta && transform.position.x < target[i].position.x + delta && transform.position.z > target[i].position.z - delta && transform.position.z < target[i].position.z + delta)
         {
@@ -140,7 +141,8 @@ public class Enmey : MonoBehaviour
 
     void DoDead()
     {
-       
+        GetComponent<Animator>().SetBool("status", false);
+        Destroy(gameObject, 2);
     }
 
     private void OnDrawGizmos()

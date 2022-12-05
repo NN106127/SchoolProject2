@@ -25,7 +25,7 @@ public class bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //¸I¨ì¼Ä¤H¦©¦å
-        if (other.gameObject.tag == "robot")
+        if (other.gameObject.tag == "robot" || other.gameObject.tag == "Plane")
         {
             Destroy(gameObject);
         }
